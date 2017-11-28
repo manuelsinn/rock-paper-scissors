@@ -1,0 +1,95 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1> Welcome to my first program! </h1>
+    <script>
+/*IDEA:
+-the input of the user is recorded
+-a random number creates a random computer choice
+-input and computer choice are compared to each other and the program shows who wins and records the games statistics
+
+to add:
+-statistics!! perhaps shown on the site in a grid?
+-a game controller that gets rid of the need to reload
+-make first character upper case
+*/
+
+
+//creating a random number for the computers random choice
+    var computerInput = Math.round(Math.random() * 3);
+//converting that number into a string
+    var computerChoice;
+    switch(computerInput){
+      case 1:
+        computerChoice = "Rock";
+        break;
+      case 2:
+        computerChoice = "Paper";
+        break;
+      case 3:
+        computerChoice = "Scissors";
+        break;
+      default:
+        alert("error");
+    }
+
+
+//DECIDING A WINNER
+    var timesLost = 0;
+    var timesWon = 0;
+    var timesTie = 0;
+
+    function whoWon(userChoice, computerChoice){
+//User chooses ROCK
+        if(userChoice === "ROCK" && computerChoice === "Rock"){
+          alert("It's a tie!");
+          timesTie++;
+      } else if(userChoice === "ROCK" && computerChoice === "Paper"){
+          alert("Unfortunately, you lose this one.");
+          timesLost++;
+      } else if(userChoice === "ROCK" && computerChoice === "Scissors"){
+          alert("Yeehaa, you win this one!");
+          timesWon++;
+//User chooses PAPER
+      } else if(userChoice === "PAPER" && computerChoice === "Rock"){
+          alert("Aw yeah, this one is yours!");
+          timesWon++;
+      } else if(userChoice === "PAPER" && computerChoice === "Paper"){
+          alert("Noone wins this round.");
+          timesTie++;
+      } else if(userChoice === "PAPER" && computerChoice === "Scissors"){
+          alert("Uhh... Seems like you have been cut right in half!");
+          timesLost++;
+//User chooses Scissors
+} else if(userChoice === "SCISSORS" && computerChoice === "Rock"){
+            alert("GRRRKKHHSSHHH. You have been crushed.");
+            timesLost++;
+        } else if(userChoice === "SCISSORS" && computerChoice === "Paper"){
+            alert("Snip Snap, there you go! Good job.");
+            timesWon++;
+        } else if(userChoice === "SCISSORS" && computerChoice === "Scissors"){
+            alert("Metal against Metal... This one is a tie.");
+            timesTie++;
+        } else {
+          alert("Seems like you didn't choose anything that makes sense.")
+        }
+    }
+
+
+    //"UI"
+
+    //input from user is saved as UPPERCASE string
+        var input = prompt("Please enter your choice", "Rock, Paper, or Scissors?");
+        var userChoice = input.toUpperCase();
+        
+        alert("You chose " + input);
+        alert("The computer chose " + computerChoice);
+        whoWon(userChoice, computerChoice);
+        alert("times you won: "  + timesWon +
+              "\ntimes you lost: " +timesLost +
+              "\ntimes of tie: " + timesTie);
+
+    </script>
+  </body>
+</html>
